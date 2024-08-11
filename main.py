@@ -290,10 +290,13 @@ class App():
                 ic(group1, group2, k)
                 j = self.num_groups_selected + k
                 self.group_out_title = "Groups: " + str(group1) + " - " + str(group2)
-                self.group_out_text = ("Cross epsilon combining rules: " + str(cross_groups_params[(group1, group2)].cross_epsilon_CR) +
-                                      "\n Cross epsilon: " + str(cross_groups_params[(group1, group2)].cross_epsilon) +
-                                      "\n Cross lambda r combining rules: " + str(cross_groups_params[(group1, group2)].cross_lambda_r_CR) +
-                                      "\n Cross lambda r: " + str(cross_groups_params[(group1, group2)].cross_lambda_r))
+                try:
+                    self.group_out_text = ("Cross epsilon combining rules: " + str(cross_groups_params[(group1, group2)].cross_epsilon_CR) +
+                                          "\n Cross epsilon: " + str(cross_groups_params[(group1, group2)].cross_epsilon) +
+                                          "\n Cross lambda r combining rules: " + str(cross_groups_params[(group1, group2)].cross_lambda_r_CR) +
+                                          "\n Cross lambda r: " + str(cross_groups_params[(group1, group2)].cross_lambda_r))
+                except Exception:
+                    self.group_out_text = "No cross data in database"
 
                 try:
                     self.cross_association_out = ("\n\n CROSS ASSOCIATION DATA:\n Group 1: " + group1 + "\n Group 2: " + group2 +
